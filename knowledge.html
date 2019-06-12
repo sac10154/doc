@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>ナレッジ共有 &#8212; SAC-Project 0.1 ドキュメント</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="検索" href="search.html" />
+    <link rel="prev" title="Welcome to SAC-Project&#39;s documentation!" href="index.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to SAC-Project&#39;s documentation!"
+             accesskey="P">前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">SAC-Project 0.1 ドキュメント</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="id1">
+<h1>ナレッジ共有<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="excel-python">
+<h2>ブック保護がかかったExcelファイルを開く（Python）<a class="headerlink" href="#excel-python" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>PythonではExcelを開くライブラリとしてxlrd等があります。
+どのライブラリもデータ参照するだけの場合でも、ブック保護がかかっている場合は
+ファイルを開くことが出来ません。
+ブック保護を一時的に回避して参照する方法を下記に記します。</p>
+<ul class="simple">
+<li><p>言語：Python</p></li>
+<li><p>概要：xlrd.open_workbookで特定のエラーの場合、「VelvetSweatshop」というマジックパスワードを使って開く</p></li>
+<li><p>処理フロー：</p></li>
+</ul>
+<div><svg height="360" viewBox="0 0 256 360" width="256" xmlns="http://www.w3.org/2000/svg" xmlns:inkspace="http://www.inkscape.org/namespaces/inkscape" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs id="defs_block">
+    <filter height="1.504" id="filter_blur" inkspace:collect="always" width="1.1575" x="-0.07875" y="-0.252">
+      <feGaussianBlur id="feGaussianBlur3780" inkspace:collect="always" stdDeviation="4.2" />
+    </filter>
+  </defs>
+  <title>blockdiag</title>
+  <desc />
+  <polygon fill="rgb(0,0,0)" points="91,46 195,46 171,86 67,86 91,46" stroke="rgb(0,0,0)" style="filter:url(#filter_blur);opacity:0.7;fill-opacity:1" />
+  <rect fill="rgb(0,0,0)" height="40" stroke="rgb(0,0,0)" style="filter:url(#filter_blur);opacity:0.7;fill-opacity:1" width="128" x="67" y="126" />
+  <rect fill="rgb(0,0,0)" height="40" stroke="rgb(0,0,0)" style="filter:url(#filter_blur);opacity:0.7;fill-opacity:1" width="128" x="67" y="286" />
+  <polygon fill="rgb(0,0,0)" points="131,198 203,226 131,254 59,226 131,198" stroke="rgb(0,0,0)" style="filter:url(#filter_blur);opacity:0.7;fill-opacity:1" />
+  <polygon fill="rgb(255,255,255)" points="88,40 192,40 168,80 64,80 88,40" stroke="rgb(0,0,0)" />
+  <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="74" x="128.0" y="66">Excelファイル</text>
+  <rect fill="rgb(255,255,255)" height="40" stroke="rgb(0,0,0)" width="128" x="64" y="120" />
+  <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="119" x="128.5" y="140">xlrd.open_workbookで</text>
+  <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="22" x="128.0" y="153">開く</text>
+  <rect fill="rgb(255,255,255)" height="40" stroke="rgb(0,0,0)" width="128" x="64" y="280" />
+  <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="126" x="128.0" y="299">パスワード「VelvetSwea</text>
+  <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="74" x="128.0" y="313">tshop」で開く</text>
+  <polygon fill="rgb(255,255,255)" points="128,192 200,220 128,248 56,220 128,192" stroke="rgb(0,0,0)" />
+  <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="66" x="128.0" y="219">ブック保護エ</text>
+  <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="22" x="128.0" y="232">ラー</text>
+  <path d="M 128 80 L 128 112" fill="none" stroke="rgb(0,0,0)" />
+  <polygon fill="rgb(0,0,0)" points="128,119 124,112 132,112 128,119" stroke="rgb(0,0,0)" />
+  <path d="M 128 160 L 128 184" fill="none" stroke="rgb(0,0,0)" />
+  <polygon fill="rgb(0,0,0)" points="128,191 124,184 132,184 128,191" stroke="rgb(0,0,0)" />
+  <path d="M 128 248 L 128 272" fill="none" stroke="rgb(0,0,0)" />
+  <polygon fill="rgb(0,0,0)" points="128,279 124,272 132,272 128,279" stroke="rgb(0,0,0)" />
+  <rect fill="white" height="14" stroke="rgb(0,0,0)" width="34" x="79" y="263" />
+  <text fill="red" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="18" x="96.0" y="275">Yes</text>
+</svg>
+</div>
+<ul class="simple">
+<li><p>サンプルソース：</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xlrd</span>
+<span class="kn">import</span> <span class="nn">msoffcrypto</span>
+<span class="kn">import</span> <span class="nn">tempfile</span>
+
+<span class="k">def</span> <span class="nf">open_workbook</span><span class="p">(</span><span class="n">workbook_file_path</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">wb</span> <span class="o">=</span> <span class="n">xlrd</span><span class="o">.</span><span class="n">open_workbook</span><span class="p">(</span><span class="n">workbook_file_path</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">wb</span>
+    <span class="k">except</span> <span class="n">xlrd</span><span class="o">.</span><span class="n">biffh</span><span class="o">.</span><span class="n">XLRDError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;Workbook is encrypted&#39;</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">workbook_file_path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fin</span><span class="p">,</span>\
+                    <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryFile</span><span class="p">()</span> <span class="k">as</span> <span class="n">tfp</span><span class="p">:</span>
+                <span class="n">encrypted</span> <span class="o">=</span> <span class="n">msoffcrypto</span><span class="o">.</span><span class="n">OfficeFile</span><span class="p">(</span><span class="n">fin</span><span class="p">)</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">encrypted</span><span class="o">.</span><span class="n">load_key</span><span class="p">(</span><span class="n">password</span><span class="o">=</span><span class="s1">&#39;VelvetSweatshop&#39;</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="k">raise</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">encrypted</span><span class="o">.</span><span class="n">decrypt</span><span class="p">(</span><span class="n">tfp</span><span class="p">)</span>
+                    <span class="n">tfp</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                    <span class="n">wb</span> <span class="o">=</span> <span class="n">xlrd</span><span class="o">.</span><span class="n">open_workbook</span><span class="p">(</span><span class="n">file_contents</span><span class="o">=</span><span class="n">tfp</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+                    <span class="k">return</span> <span class="n">wb</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">raise</span>
+
+<span class="n">book</span> <span class="o">=</span> <span class="n">open_workbook</span><span class="p">(</span><span class="s1">&#39;data.xls&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>参考：</p></li>
+</ul>
+<table class="colwidths-given docutils align-center" id="id2">
+<caption><span class="caption-text">Python Excel操作ライブラリ比較</span><a class="headerlink" href="#id2" title="このテーブルへのパーマリンク">¶</a></caption>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ライブラリ</p></th>
+<th class="head"><p>対象</p></th>
+<th class="head"><p>特徴</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>xlrd</p></td>
+<td><p>xls, xlsx</p></td>
+<td><p>読み込みのみ</p></td>
+</tr>
+<tr class="row-odd"><td><p>xlwt</p></td>
+<td><p>xls</p></td>
+<td><p>書き込みのみ</p></td>
+</tr>
+<tr class="row-even"><td><p>openpyxl</p></td>
+<td><blockquote>
+<div><p>xlsx</p>
+</div></blockquote>
+</td>
+<td><p>読み込み・書き込み</p></td>
+</tr>
+<tr class="row-odd"><td><p>padans</p></td>
+<td><p>xls, xlsx</p></td>
+<td><p>読み込み・書き込み、データ分析</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">ナレッジ共有</a><ul>
+<li><a class="reference internal" href="#excel-python">ブック保護がかかったExcelファイルを開く（Python）</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="index.html"
+                        title="前の章へ">Welcome to SAC-Project's documentation!</a></p>
+  <div role="note" aria-label="source link">
+    <h3>このページ</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/knowledge.rst.txt"
+            rel="nofollow">ソースコードを表示</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>クイック検索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="検索" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to SAC-Project&#39;s documentation!"
+             >前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">SAC-Project 0.1 ドキュメント</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, m.gotou.
+      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1 で生成しました。
+    </div>
+  </body>
+</html>

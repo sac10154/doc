@@ -1,0 +1,78 @@
+ナレッジ共有
+===============
+
+
+ブック保護がかかったExcelファイルを開く（Python）
+--------------------------------------------------
+PythonではExcelを開くライブラリとしてxlrd等があります。
+どのライブラリもデータ参照するだけの場合でも、ブック保護がかかっている場合は
+ファイルを開くことが出来ません。
+ブック保護を一時的に回避して参照する方法を下記に記します。
+
+
+* 言語：Python
+* 概要：xlrd.open_workbookで特定のエラーの場合、「VelvetSweatshop」というマジックパスワードを使って開く
+* 処理フロー：
+
+
+.. blockdiag::
+
+   blockdiag {
+      orientation = portrait;
+      edge_layout = flowchart;
+
+      A [label = "Excelファイル", shape = flowchart.input];
+      B [label = "xlrd.open_workbookで開く"];
+      C [label = "パスワード「VelvetSweatshop」で開く"];
+      D [label = "ブック保護エラー", shape = diamond];
+
+      A -> B -> D;
+      D -> C [label = "Yes", textcolor="red"];
+   }
+
+
+* サンプルソース：
+
+.. code-block:: python
+
+   import xlrd
+   import msoffcrypto
+   import tempfile
+
+   def open_workbook(workbook_file_path):
+       try:
+           wb = xlrd.open_workbook(workbook_file_path)
+           return wb
+       except xlrd.biffh.XLRDError as e:
+           if str(e) == 'Workbook is encrypted':
+               with open(workbook_file_path, 'rb') as fin,\
+                       tempfile.TemporaryFile() as tfp:
+                   encrypted = msoffcrypto.OfficeFile(fin)
+                   try:
+                       encrypted.load_key(password='VelvetSweatshop')
+                   except Exception as e:
+                       raise
+                   else:
+                       encrypted.decrypt(tfp)
+                       tfp.seek(0)
+                       wb = xlrd.open_workbook(file_contents=tfp.read())
+                       return wb
+           else:
+               raise
+       except:
+           raise
+
+   book = open_workbook('data.xls')
+
+
+* 参考：
+
+.. csv-table:: Python Excel操作ライブラリ比較
+   :header: "ライブラリ", "対象", "特徴"
+   :widths: 10, 10, 30
+
+   xlrd, "xls, xlsx", 読み込みのみ
+   xlwt, "xls", 書き込みのみ
+   openpyxl, " xlsx", 読み込み・書き込み
+   padans, "xls, xlsx", 読み込み・書き込み、データ分析
+
